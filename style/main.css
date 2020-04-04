@@ -111,14 +111,77 @@ table#whborder,table#whborder *
   border-color:rgba(255,255,255,0.5) !important;
   margin-bottom:50px;
 }
-body.index div.container
+body.index div.container,body.hunt div.container
 {
   display:flex;
   flex-direction:row-reverse;
 }
-body.index div.container div.contents
+body.index div.container div.contents,body.hunt div.container div.contents
 {
   width:100%;
+}
+div.contents div.wrapper
+{
+  width:100%;
+  position:relative;
+  top:50%;
+  left:0;
+  transform:translateY(-50%);
+}
+div.contents div.wrapper *
+{
+  box-sizing:border-box;
+}
+div.contents div.level
+{
+  text-align:center;
+  font-size:30px;
+  font-family:courier;
+  font-weight:900;
+  padding:20px 0px;
+  color:#FFFFFF;
+  text-shadow:0px 0px 5px #000000;
+}
+div.contents div.question
+{
+  text-align:center;
+  font-size:25px;
+  font-family:sans-serif;
+  padding:20px 8px;
+  color:#FFFFFF;
+  text-shadow:0px 0px 5px #000000;
+}
+div.contents form
+{
+  padding:50px 8px;
+  text-align:center;
+}
+div.contents form input[type="text"],div.contents form button
+{
+  padding:5px;
+  font-size:16px;
+  font-family:sans-serif;
+  color:#000000;
+  border:1px solid #FFFFFF;
+  transition:border 0.3s,background 0.3s;
+  margin:0px 4px;
+}
+div.contents form input[type="text"]
+{
+  background:rgba(255,255,255,0.5);
+}
+div.contents form input[type="text"]::placeholder
+{
+  color:rgba(0,0,0,0.7);
+}
+div.contents form input[type="text"]:focus
+{
+  background:rgba(255,255,255,0.9);
+  border:1px solid rgba(0,0,0,1);
+}
+div.contents form button
+{
+  padding:5px 10px;
 }
 div.colwrapper
 {
@@ -440,4 +503,14 @@ div.subcontainer div.details div.wrapper div.description
 {
   font-size:18px;
   opacity:0.8;
+}
+.rbutton
+{
+  background:#FF3030 !important;
+  border:1px solid #C00000 !important;
+}
+.gbutton
+{
+  background:#30FF30 !important;
+  border:1px solid #00C000 !important;
 }

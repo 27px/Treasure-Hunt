@@ -121,3 +121,21 @@ function startTimer()
     //Second
   },1000);
 }
+function checkAns(b,a)
+{
+  if(a.value=="")
+  {
+    b.classList.remove("gbutton");
+    b.classList.add("rbutton");
+  }
+  else
+  {
+    b.classList.remove("rbutton");
+    b.classList.add("gbutton");
+  }
+}
+function resetButton(b)
+{
+  b.classList.remove("rbutton");
+  b.classList.remove("gbutton");
+}

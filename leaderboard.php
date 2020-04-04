@@ -23,6 +23,7 @@
         if(isset($_SESSION['user']) && !empty($_SESSION['user']))
         {
       ?>
+          <a class='link' href='hunt.php'>Hunt</a>
           <a class='link' href='index.php?logout=true'>Logout</a>
       <?php
         }

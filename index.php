@@ -14,34 +14,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Hunter</title>
-    <link rel="stylesheet" href="style/main.min.css" />
+    <meta name="theme-color" content="#1976D2">
+    <link rel="stylesheet" href="style/style-index.min.css" />
     <script src="script/script.min.js"></script>
   </head>
   <body class="index" onload="startTimer();">
     <div class="container">
-      <div class="navcontainer">
-        <div class="wrapper">
-          <a class="link min" href="#"><div class="hamburger">---</div></a>
-          <a class="link main active" href="index.php">Home</a>
-          <a class="link" href="rules.html">Rules</a>
-          <a class="link" href="contact.html">Contact Us</a>
-          <a class="link" href="leaderboard.php">Leaderboard</a>
-          <?php
-            if(isset($_SESSION['user']) && !empty($_SESSION['user']))
-            {
-          ?>
-              <a class='link' href='index.php?logout=true'>Logout</a>
-          <?php
-            }
-            else
-            {
-          ?>
-              <a class='link' href='register.php'>Sign Up</a>
-              <a class='link' href='signin.php'>Sign In</a>
-          <?php
-            }
-          ?>
-        </div>
+      <div class="nav">
+        <div class="title">Hunter</div>
+        <div class="menu" onclick="_('navcontainer').classList.toggle('expand');">&vellip;</div>
+      </div>
+      <div class="navcontainer" id="navcontainer">
+        <?php require_once("functions/navbar.php"); ?>
       </div>
       <div class="contents">
         <div class="colwrapper">

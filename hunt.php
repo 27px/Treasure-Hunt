@@ -69,55 +69,74 @@
       $status="Wrong Answer";
     }
   }
-
   $db->close();
 ?>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <title>Hunter</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="style/main.min.css">
-</head>
-  <body class="hunt">
-<div class="signin">
-  <div class="container py-5">
-<div class="row text-center">
-<div class="col">
-  <?php
-    if($error==1)
-    {
-      ?>
-        <label class="text p-3" style="color:#FF4040;font-size:25px;font-weight:600;text-shadow:0px 0px 5px #000000;"><?php echo $status; ?></label>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hunter</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="style/main.min.css">
+    <script src="script/script.min.js"></script>
+  </head>
+    <body class="hunt">
+      <div class="signin">
       <?php
-    }
-    else if($finished==0)
-    {
-      ?>
-        <h1 class=" text-center whitecolor p-3" style="font-weight:600;text-shadow:0px 0px 5px #000000;">Level <?php echo $level; ?></h1>
-        <div class="container">
-          <div class="container whitecolor question my-4" style="font-weight:600;font-size:40px;text-shadow:0px 0px 5px #000000;"><?php echo $question; ?></div>
-          <form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
-            <div class="form-group m-0">
-              <input type="text" class="form-control max2 relcen trinp" id="name" placeholder="Answer" name="answer" required>
-              <label class="text p-3" style="color:#FF4040;font-size:25px;font-weight:600;text-shadow:0px 0px 5px #000000;"><?php echo $status; ?></label>
+        if($error==1)
+        {
+          ?>
+            <div class="error"><?php echo $status; ?></div>
+          <?php
+        }
+        else if($finished==0)
+        {
+          ?>
+            <div class="container">
+              <div class="navcontainer">
+                <div class="wrapper">
+                  <a class="link min" href="#"><div class="hamburger">---</div></a>
+                  <a class="link main active" href="index.php">Home</a>
+                  <a class="link" href="rules.html">Rules</a>
+                  <a class="link" href="contact.html">Contact Us</a>
+                  <a class="link" href="leaderboard.php">Leaderboard</a>
+                  <?php
+                    if(isset($_SESSION['user']) && !empty($_SESSION['user']))
+                    {
+                  ?>
+                      <a class='link' href='index.php?logout=true'>Logout</a>
+                  <?php
+                    }
+                    else
+                    {
+                  ?>
+                      <a class='link' href='register.php'>Sign Up</a>
+                      <a class='link' href='signin.php'>Sign In</a>
+                  <?php
+                    }
+                  ?>
+                </div>
+              </div>
+              <div class="contents">
+                <div class="wrapper">
+                  <div class="level">Level <?php echo $level; ?></div>
+                  <div class="question"><?php echo $question; ?></div>
+                  <form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
+                    <div class="status"><?php echo $status; ?></div>
+                    <input type="text" id="answer" placeholder="Answer" name="answer" required>
+                    <button type="button" name="subanswer" onmouseover="checkAns(this,_('answer'));" onmouseout="resetButton(this);">Submit</button>
+                  </form>
+                </div>
+              </div>
             </div>
-            <button type="submit" class="btn btn-success text-capitalize mt-1" name="subanswer">submit</button>
-          </form>
-        </div>
-      <?php
-    }
-    else
-    {
+          <?php
+        }
+        else
+        {
+          ?>
+            <div class="finished">Finished All Questions</div>
+          <?php
+        }
       ?>
-        <h1 class=" text-center p-3" style="font-weight:600;text-shadow:0px 0px 5px #000000;color:#00FF00;">Finished All Questions</h1>
-      <?php
-    }
-  ?>
-</div>
-</div>
-</div>
-</div>
-</body>
+    </div>
+  </body>
 </html>
