@@ -15,6 +15,7 @@
   //Don't change anything after this
   function isCompetitionStarted()
   {
+    return 1;
     global $competition_start_date_time;
     global $competition_end_date_time;
     $date=new DateTime();//Current Date Time

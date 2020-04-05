@@ -37,16 +37,12 @@ function togglePassword(x)
 }
 function startTimer()
 {
-  var year=_("timeryear");
-  var month=_("timermonth");
   var day=_("timerday");
   var hour=_("timerhour");
   var minute=_("timerminute");
   var second=_("timersecond");
   setInterval(function(){
     var timer={
-      year:pi(year.innerHTML),
-      month:pi(month.innerHTML),
       day:pi(day.innerHTML),
       hour:pi(hour.innerHTML),
       minute:pi(minute.innerHTML),
@@ -87,30 +83,7 @@ function startTimer()
           }
           else
           {
-            day.innerHTML=31;//change it
-            //Month
-            var m=timer.month;
-            if(m>0)
-            {
-              month.innerHTML=m-1;
-            }
-            else
-            {
-              month.innerHTML=12;
-              //Year
-              var y=timer.year;
-              if(y>0)
-              {
-                year.innerHTML=y-1;
-              }
-              else
-              {
-                year.innerHTML=0;//END
-                ///
-              }
-              //Year
-            }
-            //Month
+            window.location.reload();
           }
           //Day
         }
@@ -138,4 +111,21 @@ function resetButton(b)
 {
   b.classList.remove("rbutton");
   b.classList.remove("gbutton");
+}
+function toggleMenu()
+{
+  var nav=_('navcontainer');
+  var c=nav.classList;
+  if(nav.getAttribute("status")=="collapse")
+  {
+    c.remove("collapse");
+    c.add("expand");
+    nav.setAttribute("status","expand");
+  }
+  else
+  {
+    c.remove("expand");
+    c.add("collapse");
+    nav.setAttribute("status","collapse");
+  }
 }
