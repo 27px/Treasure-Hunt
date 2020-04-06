@@ -26,7 +26,7 @@
         </defs>
         <circle cx="50" cy="50" r="45" fill="url(#grad)" stroke="rgba(26,35,126,0.5)" stroke-weight="1"/>
         <path id="svg_<?php echo $id; ?>_path" fill="none" stroke-linecap="round" stroke-width="8" stroke="#FFFFFF" stroke-dasharray="0,220" d="M50 15 a 35 35 0 0 1 0 70 a 35 35 0 0 1 0 -70"/>
-        <text id="svg_<?php echo $id; ?>_text" x="50" y="50" text-anchor="middle" font-family="Roboto,sans-serif" dy="7" font-size="20" fill="#FFFFFF"><?php echo $p." ".$u; ?></text>
+        <text id="svg_<?php echo $id; ?>_text" x="50" y="50" text-anchor="middle" font-family="Roboto,sans-serif" dy="7" font-size="21" fill="#FFFFFF"><?php echo $p." ".$u; ?></text>
       </svg>
     <?php
   }
@@ -153,11 +153,7 @@
                       echo "</div>";
                     echo "</div>";
                     echo "<div class='time' id='time'>";
-                      echo "<div class='first'>";
-                        echo "<div class='h'>".$stat_h."</div>";
-                        echo "<div class='sp'>:</div>";
-                        echo "<div class='i'>".$stat_i."</div>";
-                      echo "</div>";
+                      echo "<div class='first'>".($stat_h%12)." : ".$stat_i."</div>";
                       echo "<div class='s'>".$stat_s."</div>";
                       echo "<div class='mer'>".$stat_mer."</div>";
                     echo "</div>";

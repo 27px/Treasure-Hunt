@@ -574,16 +574,10 @@ div.time
 }
 div.time div.first
 {
-  display:flex;
-  flex-direction:row;
-  font-size:35px;
+  font-size:34px;
   text-align:center;
-}
-div.time div.first div.h,div.time div.first div.i
-{
-  padding:3px;
-  width:100%;
-  text-align:center;
+  word-wrap:normal;
+  white-space:nowrap;
 }
 div.time div.s
 {

@@ -123,7 +123,7 @@
                   <form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
                     <div class="status"><?php echo $status; ?></div>
                     <input type="text" id="answer" placeholder="Answer" name="answer" required>
-                    <button type="button" name="subanswer" onmouseover="checkAns(this,_('answer'));" onmouseout="resetButton(this);">Submit</button>
+                    <button type="submit" name="subanswer" onmouseover="checkAns(this,_('answer'));" onmouseout="resetButton(this);">Submit</button>
                   </form>
                 </div>
               </div>
