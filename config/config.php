@@ -7,15 +7,14 @@
     $db_database="treasure";//Database Name
     $no_of_questions=20;//Number of Questions
     $max_leaderboard_num_row=10;//Number of rows in Leaderboard
-    $start_date='2020-04-01';//Year-Month-Day
-    $start_time='08:28:00';//Hour:Minute:Seconds
+    $start_date='2020-04-06';//Year-Month-Day
+    $start_time='08:28:00 PM';//Hour:Minute:Seconds AM/PM
     $competition_number_of_days=5;//Number of days where event will be online
   //Config Values
 
   //Don't change anything after this
   function isCompetitionStarted()
   {
-    return 1;
     global $competition_start_date_time;
     global $competition_end_date_time;
     $date=new DateTime();//Current Date Time
@@ -54,9 +53,7 @@
   date_default_timezone_set($timezone);
   $competition_start_date_time=new DateTime($start_date." ".$start_time);
   $competition_end_date_time=new DateTime($start_date." ".$start_time." + ".$competition_number_of_days." day");
-  echo "<div style='display:none;'>";
   $db=new mysqli($db_server,$db_user,$db_password,$db_database);
-  echo "</div>";
   if(mysqli_connect_error())
   {
     die("<div style='color:red;font-weight:900;font-size:23px;'>Database Error : ".mysqli_connect_error())."</div>";

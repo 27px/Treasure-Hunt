@@ -35,12 +35,55 @@ function togglePassword(x)
     resetForm(p,x);
   }
 }
-function startTimer()
+function adjustCalendar()
 {
-  var day=_("timerday");
-  var hour=_("timerhour");
-  var minute=_("timerminute");
-  var second=_("timersecond");
+  var c=_("clock");
+  if(typeof(c)!='undefined' && c!= null)
+  {
+    var c=_("clock");
+    var t=_("time");
+    var cw=c.getBoundingClientRect().width;
+    var tw=c.getBoundingClientRect().width;
+    var wmax=(cw>tw)?cw:tw;
+    c.style.width=wmax;
+    t.style.width=wmax;
+  }
+}
+function adjustUI()
+{
+  var tiles=_("navcontainer").children;
+  var n=tiles.length,i=0;
+  for(i=0;i<n;i++)
+  {
+    var icon=tiles[i].children[0];
+    var ic=icon.getBoundingClientRect();
+    var w=ic.width;
+    var h=ic.height;
+    var icmin=(w<h)?w:h;
+    icon.style.width=icmin+"px";
+    icon.style.height=icmin+"px";
+  }
+  // var timer=_('timer');
+  // var ts=_('timersecond');
+  // ts.style.display="block";
+  // isOverflowing(timer);
+  // if(isOverflowing(timer)!="")
+  // {
+  //   ts.style.display="none";
+  // }
+  // else
+  // {
+  //   ts.style.display="block";
+  // }
+}
+function startChanges()
+{
+  var day=_("svg_day_text");
+  var hour=_("svg_hour_text");
+  var minute=_("svg_minute_text");
+  var second=_("svg_second_text");
+  var maxday=pi(_("timerunner").getAttribute("maxday"));
+  maxday=(maxday<1)?1:maxday;
   setInterval(function(){
     var timer={
       day:pi(day.innerHTML),
@@ -52,34 +95,34 @@ function startTimer()
     var s=timer.second;
     if(s>0)
     {
-      second.innerHTML=s-1;
+      setProgress("second",s-1,60," S");
     }
     else
     {
-      second.innerHTML=59;
+      setProgress("second",59,60," S");
       //Minute
       var m=timer.minute;
       if(m>0)
       {
-        minute.innerHTML=m-1;
+        setProgress("minute",m-1,60," M");
       }
       else
       {
-        minute.innerHTML=59;
+        setProgress("minute",59,60," M");
         //Hour
         var h=timer.hour;
         if(h>0)
         {
-          hour.innerHTML=h-1;
+          setProgress("hour",h-1,24," H");
         }
         else
         {
-          hour.innerHTML=24;
+          setProgress("hour",24,24," H");
           //Day
           var d=timer.day;
           if(d>0)
           {
-            day.innerHTML=d-1;
+            setProgress("day",d-1,maxday," D");
           }
           else
           {
@@ -128,4 +171,42 @@ function toggleMenu()
     c.add("collapse");
     nav.setAttribute("status","collapse");
   }
+}
+function isOverflowing(e)
+{
+  if(e.scrollHeight>e.clientHeight)
+  {
+    return "h";
+  }
+  if(e.scrollWidth>e.clientWidth)
+  {
+    return "w";
+  }
+  return "";
+}
+function setProgress(i,progress,total,unit)//id-num,progress,total,unit
+{
+  var dash=220;//SVG dash array
+  progress=(progress>total)?total:progress;
+  var cur=(progress*dash)/total;
+  _('svg_'+i+'_path').setAttribute("stroke-dasharray",cur+","+(dash-cur));
+  _('svg_'+i+'_text').innerHTML=progress+unit;
+}
+function firstClock()
+{
+  var day=_("svg_day_text");
+  var hour=_("svg_hour_text");
+  var minute=_("svg_minute_text");
+  var second=_("svg_second_text");
+  var maxday=pi(_("timerunner").getAttribute("maxday"));
+  maxday=(maxday<1)?1:maxday;
+  var d=pi(day.innerHTML);
+  var h=pi(hour.innerHTML);
+  var i=pi(minute.innerHTML);
+  var s=pi(second.innerHTML);
+  setProgress("day",d,maxday," D");
+  setProgress("hour",h,24," H");
+  setProgress("minute",i,60," M");
+  setProgress("second",s,60," S");
+
 }
