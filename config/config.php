@@ -7,8 +7,8 @@
     $db_database="treasure";//Database Name
     $no_of_questions=20;//Number of Questions
     $max_leaderboard_num_row=10;//Number of rows in Leaderboard
-    $start_date='2020-04-06';//Year-Month-Day
-    $start_time='08:28:00 PM';//Hour:Minute:Seconds AM/PM
+    $start_date='2020-04-07';//Year-Month-Day
+    $start_time='05:46:30 AM';//Hour:Minute:Seconds AM/PM
     $competition_number_of_days=5;//Number of days where event will be online
   //Config Values
 

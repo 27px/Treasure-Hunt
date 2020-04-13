@@ -52,10 +52,43 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
     <title>Hunter</title>
     <meta name="theme-color" content="#1976D2">
+    <script>
+      document.onreadystatechange=function(){
+        if(document.readyState=="complete")
+        {
+          var l=_("loader");
+          l.parentNode.removeChild(_("loader"));
+        }
+      };
+    </script>
+    <link rel="preload" as="image" type="image/jpg" href="images/blue.jpg" />
+    <link rel="preload" as="image" type="image/svg+xml" href="images/home.svg" />
+    <link rel="preload" as="image" type="image/svg+xml" href="images/rules.svg" />
+    <link rel="preload" as="image" type="image/svg+xml" href="images/contact.svg" />
+    <link rel="preload" as="image" type="image/svg+xml" href="images/leaderboard.svg" />
+    <link rel="preload" as="image" type="image/svg+xml" href="images/signup.svg" />
+    <link rel="preload" as="image" type="image/svg+xml" href="images/signin.svg" />
+    <!--
+    <link rel="preload" as="font" type="font/ttf" href="font/Lemon.ttf" />
+    <link rel="preload" as="font" type="font/ttf" href="font/digital-7.ttf" />
+    <link rel="preload" as="font" type="font/ttf" href="font/Roboto.ttf" />
+    -->
+    <link rel="preload" as="style" type="text/css" href="style/style-index.min.css" />
+    <link rel="preload" as="script" type="text/javascript" href="script/script.min.js" />
     <link rel="stylesheet" href="style/style-index.min.css" />
     <script src="script/script.min.js"></script>
   </head>
-  <body class="index" onload="firstClock();adjustUI();adjustCalendar();" onresize="adjustUI();adjustCalendar();" onorientationchange="adjustUI();">
+  <body class="index" onload="firstClock();adjustUI();adjustCalendar();" onresize="adjustUI();" onorientationchange="adjustUI();">
+    <div class="loader" id="loader">
+      <div class="loadcontainer">
+        <?php
+          for($i=0;$i<10;$i++)
+          {
+            echo "<div class='c'></div>";
+          }
+        ?>
+      </div>
+    </div>
     <div class="container">
       <div class="nav">
         <div class="title">Hunter</div>
@@ -81,7 +114,7 @@
             $x_h=$x->format("%h");
             $x_i=$x->format("%i");
             $x_s=$x->format("%s");
-            $status="Competition is Started,<br>and will end on ";
+            $status="Competition has Started, and will end on ";
             $stat_d=$competition_end_date_time->format("d");
             $stat_m=$competition_end_date_time->format("m");
             $stat_y=$competition_end_date_time->format("Y");
@@ -92,12 +125,6 @@
             $stat_f=$competition_end_date_time->format("F");
             $stat_mer=$competition_end_date_time->format("A");
             $maxday=$competition_number_of_days;
-            // echo "<div class='timer' id='timer'>";
-            // echo "<div class='box'><div class='num' id='timerday'>".$x_d."</div><div class='desc'>Days</div></div>";
-            // echo "<div class='box'><div class='num' id='timerhour'>".$x_h."</div><div class='desc'>Hours</div></div>";
-            // echo "<div class='box'><div class='num' id='timerminute'>".$x_i."</div><div class='desc'>Minutes</div></div>";
-            // echo "<div class='box'><div class='num' id='timersecond'>".$x_s."</div><div class='desc'>Seconds</div></div>";
-            // echo "</div>";
           }
           else if($comp_status==2)
           {
@@ -118,12 +145,6 @@
             $stat_f=$competition_start_date_time->format("F");
             $stat_mer=$competition_start_date_time->format("A");
             $maxday=$x_d;
-            // echo "<div class='timer'>";
-            // echo "<div class='box'><div class='num' id='timerday'>".$x_d."</div><div class='desc'>Days</div></div>";
-            // echo "<div class='box'><div class='num' id='timerhour'>".$x_h."</div><div class='desc'>Hours</div></div>";
-            // echo "<div class='box'><div class='num' id='timerminute'>".$x_i."</div><div class='desc'>Minutes</div></div>";
-            // echo "<div class='box'><div class='num' id='timersecond'>".$x_s."</div><div class='desc'>Seconds</div></div>";
-            // echo "</div>";
           }
           else
           {
@@ -169,9 +190,7 @@
         if($stat_date_active==1)
         {
       ?>
-        <script>
-          startChanges();
-        </script>
+        <script>startChanges();</script>
       <?php
         }
       ?>

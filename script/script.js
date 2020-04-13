@@ -44,7 +44,7 @@ function adjustCalendar()
     var t=_("time");
     var cw=c.getBoundingClientRect().width;
     var tw=c.getBoundingClientRect().width;
-    var wmax=(cw>tw)?cw:tw;
+    var wmax=parseInt((cw>tw)?cw:tw);
     c.style.width=wmax;
     t.style.width=wmax;
   }
@@ -59,22 +59,10 @@ function adjustUI()
     var ic=icon.getBoundingClientRect();
     var w=ic.width;
     var h=ic.height;
-    var icmin=(w<h)?w:h;
+    var icmin=parseInt((w<h)?w:h);
     icon.style.width=icmin+"px";
     icon.style.height=icmin+"px";
   }
-  // var timer=_('timer');
-  // var ts=_('timersecond');
-  // ts.style.display="block";
-  // isOverflowing(timer);
-  // if(isOverflowing(timer)!="")
-  // {
-  //   ts.style.display="none";
-  // }
-  // else
-  // {
-  //   ts.style.display="block";
-  // }
 }
 function startChanges()
 {
@@ -126,7 +114,9 @@ function startChanges()
           }
           else
           {
-            window.location.reload();
+            /// important
+            /// when timer hits zero
+            /// window.location.reload();
           }
           //Day
         }
